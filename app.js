@@ -5,12 +5,14 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+//Routes
+var user_routes = require('./routes/user');
+
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 
+//Middleare API
+app.use('/api', user_routes);
 
-app.get('/provas', function (req, res) {
-    res.status(200).send({message: 'Bem vindo'})
-});
 
 module.exports = app;

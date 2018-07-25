@@ -5,6 +5,7 @@ var port = process.env.PORT || 3977;
 
 
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/mean_spot', (err, res) => {
     if(err){
         throw err;
