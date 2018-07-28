@@ -1,0 +1,56 @@
+<div class="row" *ngIf="identity">
+    <div  class="navigation col-1">
+        <h1> {{ title }}!        </h1>
+    </div>
+    <div class="clearfix"></div>
+    <div class="navigation col-11">
+       <p>Logado</p>
+    </div>
+</div>
+
+<div class="row" *ngIf="!identity">
+    <div  class="col-6 text-center ">
+        <h1>  Login  </h1>
+        <div *ngIf="errorMessage">
+            <div class="aler alert-info">
+                {{errorMessage}}
+            </div>
+        </div>
+        <form #loginForm="ngForm" class="col-8 mx-auto" (ngSubmit)="onSubmit()">
+            <p>
+                <label>Email</label>
+                <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required>
+                <span *ngIf="!email.valid && email.touched">Campo email é Obrigatório</span>
+            </p>
+            <p>
+                <label>Senha</label>
+                <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required>
+            </p>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <div class="col-6 text-center">
+        <h1>Cadastro</h1>
+
+        <form class="col-8 mx-auto">
+            <p>
+                <label>Nome</label>
+                <input type="text" class="form-control" required>
+            </p>
+            <p>
+                <label>Username</label>
+                <input type="text" class="form-control" required>
+            </p>
+            <p>
+                <label>Email</label>
+                <input type="email" class="form-control" required>
+            </p>
+            <p>
+                <label>Senha</label>
+                <input type="text" class="form-control" required>
+            </p>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>
